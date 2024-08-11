@@ -206,7 +206,7 @@
             numericUpDown1.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(57, 25);
-            numericUpDown1.TabIndex = 2;
+            numericUpDown1.TabIndex = 0;
             // 
             // numericUpDown2
             // 
@@ -215,7 +215,7 @@
             numericUpDown2.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(57, 25);
-            numericUpDown2.TabIndex = 2;
+            numericUpDown2.TabIndex = 1;
             // 
             // numericUpDown3
             // 
@@ -233,7 +233,7 @@
             numericUpDown4.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown4.Name = "numericUpDown4";
             numericUpDown4.Size = new Size(57, 25);
-            numericUpDown4.TabIndex = 2;
+            numericUpDown4.TabIndex = 3;
             // 
             // numericUpDown5
             // 
@@ -242,7 +242,7 @@
             numericUpDown5.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown5.Name = "numericUpDown5";
             numericUpDown5.Size = new Size(57, 25);
-            numericUpDown5.TabIndex = 2;
+            numericUpDown5.TabIndex = 4;
             // 
             // numericUpDown6
             // 
@@ -251,7 +251,7 @@
             numericUpDown6.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown6.Name = "numericUpDown6";
             numericUpDown6.Size = new Size(57, 25);
-            numericUpDown6.TabIndex = 2;
+            numericUpDown6.TabIndex = 5;
             // 
             // numericUpDown7
             // 
@@ -260,7 +260,7 @@
             numericUpDown7.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown7.Name = "numericUpDown7";
             numericUpDown7.Size = new Size(57, 25);
-            numericUpDown7.TabIndex = 2;
+            numericUpDown7.TabIndex = 6;
             // 
             // numericUpDown8
             // 
@@ -269,7 +269,7 @@
             numericUpDown8.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown8.Name = "numericUpDown8";
             numericUpDown8.Size = new Size(57, 25);
-            numericUpDown8.TabIndex = 2;
+            numericUpDown8.TabIndex = 7;
             // 
             // textBox11
             // 
@@ -366,7 +366,7 @@
             numericUpDown9.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown9.Name = "numericUpDown9";
             numericUpDown9.Size = new Size(57, 25);
-            numericUpDown9.TabIndex = 2;
+            numericUpDown9.TabIndex = 8;
             // 
             // numericUpDown10
             // 
@@ -375,7 +375,7 @@
             numericUpDown10.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown10.Name = "numericUpDown10";
             numericUpDown10.Size = new Size(57, 25);
-            numericUpDown10.TabIndex = 2;
+            numericUpDown10.TabIndex = 9;
             // 
             // numericUpDown11
             // 
@@ -384,7 +384,7 @@
             numericUpDown11.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown11.Name = "numericUpDown11";
             numericUpDown11.Size = new Size(57, 25);
-            numericUpDown11.TabIndex = 2;
+            numericUpDown11.TabIndex = 10;
             // 
             // numericUpDown12
             // 
@@ -393,7 +393,7 @@
             numericUpDown12.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown12.Name = "numericUpDown12";
             numericUpDown12.Size = new Size(57, 25);
-            numericUpDown12.TabIndex = 2;
+            numericUpDown12.TabIndex = 11;
             // 
             // numericUpDown13
             // 
@@ -402,7 +402,7 @@
             numericUpDown13.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown13.Name = "numericUpDown13";
             numericUpDown13.Size = new Size(57, 25);
-            numericUpDown13.TabIndex = 2;
+            numericUpDown13.TabIndex = 12;
             // 
             // numericUpDown14
             // 
@@ -411,7 +411,7 @@
             numericUpDown14.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown14.Name = "numericUpDown14";
             numericUpDown14.Size = new Size(57, 25);
-            numericUpDown14.TabIndex = 2;
+            numericUpDown14.TabIndex = 13;
             // 
             // numericUpDown15
             // 
@@ -420,7 +420,7 @@
             numericUpDown15.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown15.Name = "numericUpDown15";
             numericUpDown15.Size = new Size(57, 25);
-            numericUpDown15.TabIndex = 2;
+            numericUpDown15.TabIndex = 14;
             // 
             // numericUpDown16
             // 
@@ -429,7 +429,7 @@
             numericUpDown16.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             numericUpDown16.Name = "numericUpDown16";
             numericUpDown16.Size = new Size(57, 25);
-            numericUpDown16.TabIndex = 2;
+            numericUpDown16.TabIndex = 15;
             // 
             // textBox19
             // 
@@ -462,6 +462,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(327, 179);
             listBox1.TabIndex = 3;
+            listBox1.TabStop = false;
             // 
             // listBox2
             // 
@@ -472,6 +473,7 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(327, 179);
             listBox2.TabIndex = 3;
+            listBox2.TabStop = false;
             // 
             // textBox21
             // 
@@ -516,6 +518,7 @@
             richTextBox1.ReadOnly = true;
             richTextBox1.Size = new Size(555, 70);
             richTextBox1.TabIndex = 7;
+            richTextBox1.TabStop = false;
             richTextBox1.Text = "";
             // 
             // button1
@@ -524,7 +527,7 @@
             button1.Location = new Point(574, 619);
             button1.Name = "button1";
             button1.Size = new Size(122, 67);
-            button1.TabIndex = 8;
+            button1.TabIndex = 16;
             button1.Text = "Generate Code!";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;

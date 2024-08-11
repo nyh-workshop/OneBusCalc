@@ -368,7 +368,7 @@ namespace OneBusCalc
             richTextBox1.Text += ", ";
             richTextBox1.Text += "0x" + Convert.ToInt32(numericUpDown8.Value).ToString("X2");
             richTextBox1.Text += "]";
-        }
+        }        
     }
 
     public class MyGlobalVariable
