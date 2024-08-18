@@ -30,6 +30,9 @@ namespace OneBusCalc
             int R00 = 0;
             int R01 = 0;
 
+            MyGlobalVariable.FWEN_bit = R410B & 0x08;
+            R410B = R410B & ~(0x08); 
+
             if (R410B < 0x06)
             {
                 switch (R410B & 0x07)
@@ -74,7 +77,7 @@ namespace OneBusCalc
                 {
                     PhysicalAddrPRG_Bank0 = ((R4100 & 0xF0) << 17) + (((R410A & R00) | (0xFE & R01)) << 13);
                     PhysicalAddrPRG_Bank1 = ((R4100 & 0xF0) << 17) + (((R410A & R00) | (R4108 & R01)) << 13);
-                    PhysicalAddrPRG_Bank2 = ((R4100 & 0xF0) << 17) + (((R410A & R00) | (R4109 & R01)) << 13);
+                    PhysicalAddrPRG_Bank2 = ((R4100 & 0xF0) << 17) + (((R410A & R00) | (R4107 & R01)) << 13);
                     PhysicalAddrPRG_Bank3 = ((R4100 & 0xF0) << 17) + (((R410A & R00) | (0xFF & R01)) << 13);
                 }
             }
@@ -97,7 +100,7 @@ namespace OneBusCalc
                     {
                         PhysicalAddrPRG_Bank0 = ((R4100 & 0xF0) << 17) + (0xFE << 13);
                         PhysicalAddrPRG_Bank1 = ((R4100 & 0xF0) << 17) + (R4108 << 13);
-                        PhysicalAddrPRG_Bank2 = ((R4100 & 0xF0) << 17) + (R4109 << 13);
+                        PhysicalAddrPRG_Bank2 = ((R4100 & 0xF0) << 17) + (R4107 << 13);
                         PhysicalAddrPRG_Bank3 = ((R4100 & 0xF0) << 17) + (0xFF << 13);
                     }
                 }
@@ -115,15 +118,19 @@ namespace OneBusCalc
             listBox1.Items[3] = "Bank3 = " + PhysicalAddrPRG_Bank3.ToString("X8");
 
             MyGlobalVariable.PRG_swap = R4105 & 0x40;
+            MyGlobalVariable.CHR_swap = R4105 & 0x80;
             MyGlobalVariable.HorzVertSelection = R4106 & 0x01;
             textBox21.Text = checkHorzVertSelection();
             textBox22.Text = checkPRGswap();
+            textBox23.Text = checkCHRswap();
+            textBox24.Text = checkFWEN();
         }
 
         public void calcCHR()
         {
             // Video Address Normal Mode:
             int R4100 = Convert.ToInt32(numericUpDown1.Value);
+            int R4105 = Convert.ToInt32(numericUpDown2.Value);
             int R2012 = Convert.ToInt32(numericUpDown9.Value);
             int R2013 = Convert.ToInt32(numericUpDown10.Value);
             int R2014 = Convert.ToInt32(numericUpDown11.Value);
@@ -191,6 +198,17 @@ namespace OneBusCalc
                 PhysicalAddrCHR_Bank5 = ((R4100 & 0x0F) << 21) + ((R2018 & 0x70) << 14) + (((R201A & R00) | ((R2015) & R01)) << 10);
             }
 
+            // R4105.7:
+            if ((R4105 & 0x80) == 0x80)
+            {
+                PhysicalAddrCHR_Bank0 += 0x1000;
+                PhysicalAddrCHR_Bank1 += 0x1000;
+                PhysicalAddrCHR_Bank2 -= 0x1000;
+                PhysicalAddrCHR_Bank3 -= 0x1000;
+                PhysicalAddrCHR_Bank4 -= 0x1000;
+                PhysicalAddrCHR_Bank5 -= 0x1000;
+            }
+
             listBox2.Items[0] = "Bank0 = " + PhysicalAddrCHR_Bank0.ToString("X8");
             listBox2.Items[1] = "Bank1 = " + PhysicalAddrCHR_Bank1.ToString("X8");
             listBox2.Items[2] = "Bank2 = " + PhysicalAddrCHR_Bank2.ToString("X8");
@@ -236,6 +254,8 @@ namespace OneBusCalc
 
             textBox21.Text = checkHorzVertSelection();
             textBox22.Text = checkPRGswap();
+            textBox23.Text = checkCHRswap();
+            textBox24.Text = checkFWEN();
 
             richTextBox1.Clear();
         }
@@ -264,14 +284,40 @@ namespace OneBusCalc
             }
         }
 
+        private string checkCHRswap()
+        {
+            if (MyGlobalVariable.CHR_swap == 0)
+            {
+                return "$4105.7 = 0 CHR No Swap";
+            }
+            else
+            {
+                return "$4105.7 = 1 CHR Swap";
+            }
+        }
+
+        private string checkFWEN()
+        {
+            if (MyGlobalVariable.FWEN_bit == 0)
+            {
+                return "FWEN disabled";
+            }
+            else
+            {
+                return "FWEN enabled";
+            }
+        }
+
         private void numericUpDown1_ValueChanged(Object? sender, EventArgs e)
         {
             calcPRG();
+            calcCHR();
         }
 
         private void numericUpDown2_ValueChanged(Object? sender, EventArgs e)
         {
             calcPRG();
+            calcCHR();
         }
         private void numericUpDown3_ValueChanged(Object? sender, EventArgs e)
         {
@@ -335,7 +381,7 @@ namespace OneBusCalc
         private void button1_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-            richTextBox1.Text = "[0x" + Convert.ToInt32(numericUpDown9.Value).ToString("X2");
+            richTextBox1.Text = "0x" + Convert.ToInt32(numericUpDown9.Value).ToString("X2");
             richTextBox1.Text += ", ";
             richTextBox1.Text += "0x" + Convert.ToInt32(numericUpDown10.Value).ToString("X2");
             richTextBox1.Text += ", ";
@@ -367,7 +413,6 @@ namespace OneBusCalc
             richTextBox1.Text += "0x" + Convert.ToInt32(numericUpDown7.Value).ToString("X2");
             richTextBox1.Text += ", ";
             richTextBox1.Text += "0x" + Convert.ToInt32(numericUpDown8.Value).ToString("X2");
-            richTextBox1.Text += "]";
         }        
     }
 
@@ -375,6 +420,8 @@ namespace OneBusCalc
     {
         public static int PRG_swap = 0;
         public static int HorzVertSelection = 0;
+        public static int CHR_swap = 0;
+        public static int FWEN_bit = 0;
     }
 
     class PhysicalAddr

@@ -71,6 +71,7 @@
             textBox23 = new TextBox();
             richTextBox1 = new RichTextBox();
             button1 = new Button();
+            textBox24 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -505,11 +506,11 @@
             textBox23.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox23.Location = new Point(369, 298);
             textBox23.Name = "textBox23";
+            textBox23.PlaceholderText = "R4105.7 status";
             textBox23.ReadOnly = true;
             textBox23.Size = new Size(327, 26);
             textBox23.TabIndex = 6;
             textBox23.TabStop = false;
-            textBox23.Text = "R4105.7 not implemented yet!";
             // 
             // richTextBox1
             // 
@@ -532,11 +533,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // textBox24
+            // 
+            textBox24.BackColor = SystemColors.Control;
+            textBox24.BorderStyle = BorderStyle.None;
+            textBox24.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox24.Location = new Point(368, 327);
+            textBox24.Name = "textBox24";
+            textBox24.PlaceholderText = "FWEN status";
+            textBox24.Size = new Size(166, 26);
+            textBox24.TabIndex = 17;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(722, 701);
+            Controls.Add(textBox24);
             Controls.Add(button1);
             Controls.Add(richTextBox1);
             Controls.Add(textBox23);
@@ -648,5 +661,6 @@
         private TextBox textBox23;
         private RichTextBox richTextBox1;
         private Button button1;
+        private TextBox textBox24;
     }
 }
